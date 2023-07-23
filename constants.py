@@ -4,7 +4,7 @@ import os
 import tempfile
 
 BASE_DIR = pathlib.Path(__file__).parent
-FILE_NAME = "Solution.py"
+FILE_NAME = "Solution"
 
 dirNames = [
     "Time Limit Exceeded",
