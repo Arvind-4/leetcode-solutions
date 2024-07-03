@@ -6,9 +6,9 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         n = len(nums)
-        for i in range(n - 1):
-            for j in range(n - i -1):
-                if nums[j] > nums[j + 1]:
-                    nums[j], nums[j + 1] = nums[j + 1], nums[j]
-
+        d = {}
+        for num in nums:
+            if num in d: d[num] += 1
+            else: d[num] = 1
         
+        nums[:] = d.get(0, 0) * [0] + d.get(1, 0) * [1] + d.get(2, 0) * [2]    

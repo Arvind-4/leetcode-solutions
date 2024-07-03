@@ -3,13 +3,15 @@
 class Solution:
     def closeStrings(self, word1: str, word2: str) -> bool:
         d1, d2 = {}, {}
+        if len(word1) != len(word2): return False
 
-        if len(word1) != len(word2):
-            return 0
-        count1 = Counter(word1)
-        count2 = Counter(word2)
-
-        c1 = sorted(count1.keys()) == sorted(count2.keys())
-        c2 = sorted(count1.values()) == sorted(count2.values())
+        for ch in word1:
+            d1[ch] = d1.get(ch, 0) + 1
         
+        for ch in word2:
+            d2[ch] = d2.get(ch, 0) + 1
+            
+        c1 = sorted(d1.keys()) == sorted(d2.keys())
+        c2 = sorted(d1.values()) == sorted(d2.values())
+
         return c1 and c2

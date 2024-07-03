@@ -1,17 +1,27 @@
 // https://leetcode.com/problems/asteroid-collision
 
 class Solution:
-    def asteroidCollision(self, arr: List[int]) -> List[int]:
+    def asteroidCollision(self, asteroids: List[int]) -> List[int]:
+        n = len(asteroids)
         stack = []
-        for a in arr:
-            while stack and stack[-1] > 0 > a:
-                if stack[-1] < abs(a):
-                    stack.pop()
-                    continue
-                elif stack[-1] == abs(a):
-                    stack.pop()
-                break
+
+        for x in asteroids:
+            if not stack or x > 0:
+                stack.append(x)
             else:
-                stack.append(a)
-        
+                while 1:
+                    peek = stack[-1]
+                    if peek < 0:
+                        stack.append(x)
+                        break
+                    elif peek == -x:
+                        stack.pop()
+                        break
+                    elif peek > -x:
+                        break
+                    else:
+                        stack.pop()
+                        if not stack:
+                            stack.append(x)
+                            break
         return stack

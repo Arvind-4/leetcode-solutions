@@ -5,17 +5,17 @@ class Solution:
         if len(s) != len(t):
             return 0
 
-        st, ts = {}, {}
+        ds, dt = {}, {}
 
         for i in range(len(s)):
-            if s[i] in st:
-                if st[s[i]] != t[i]:
+            if s[i] in ds:
+                if ds[s[i]] != t[i]:
                     return False
             else:
-                if t[i] in ts:
+                if t[i] in dt:
                     return False
 
-                st[s[i]] = t[i]
-                ts[t[i]] = s[i]
+                ds[s[i]] = t[i]
+                dt[t[i]] = s[i]
 
         return True

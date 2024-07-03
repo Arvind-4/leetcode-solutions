@@ -1,0 +1,13 @@
+// https://leetcode.com/problems/minimum-flips-to-make-a-or-b-equal-to-c
+
+class Solution:
+    def minFlips(self, a: int, b: int, c: int) -> int:
+        flips = 0
+
+        for i in range(31):
+            if (c >> i) & 1:
+                flips += ((a >> i) & 1) == 0 and ((b >> i) & 1) == 0
+            else:
+                flips += (a >> i) & 1
+                flips += (b >> i) & 1
+        return flips

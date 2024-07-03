@@ -1,14 +1,16 @@
 // https://leetcode.com/problems/is-subsequence
 
-from itertools import combinations
-
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        i = 0  
-        j = 0  
-        while i < len(s) and j < len(t):
-            if s[i] == t[j]:
-                i += 1
-            j += 1
-        return i == len(s)
+        if s == "":
+            return 1
+        l = 0
+        r = 0
+        while l < len(s) and r < len(t):
+            if s[l] == t[r]:
+                l += 1
+                if l == len(s):
+                    return 1
+            r += 1
+        return 0
         

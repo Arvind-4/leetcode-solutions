@@ -2,15 +2,12 @@
 
 class Solution:
     def uniqueOccurrences(self, arr: List[int]) -> bool:
-        n = len(arr)
         d = {}
-        for i in range(n):
-            if arr[i] in d:
-                d[arr[i]] += 1
-            else:
-                d[arr[i]] = 1
-        l = list(d.values())
-        n1 = len(l)
-        n2 = len(set(l))
-
-        return n1 == n2
+        for num in arr:
+            d[num] = d.get(num, 0) + 1
+        visited = []
+        for k, v in d.items():
+            if v in visited:
+                return 0
+            visited.append(v)
+        return 1

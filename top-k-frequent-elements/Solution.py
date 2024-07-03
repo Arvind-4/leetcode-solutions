@@ -3,18 +3,14 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
         d = {}
-        result = []
-        for i in nums:
-            if i in d:
-                d[i] += 1
-            else: d[i] = 1
+        for num in nums:
+            if num in d: d[num] += 1
+            else: d[num] = 1
 
-        obj = sorted(d.items(), key= lambda x: x[1], reverse=True)
-
-        for k, v in obj[:k]:
-            result.append(k)
-
+        sort = sorted(d.items(), key= lambda x: x[1], reverse=True)
+        l = []
+        count = 1
+        for k, v in sort[:k]:
+            l.append(k)
+        return l
         
-
-
-        return result
